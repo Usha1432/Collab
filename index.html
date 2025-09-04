@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CMR Shopping Mall Dashboard</title>
+  <style>
+    /* ========== BASIC STYLES ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    /* ========== SIDEBAR ========== */
+    .sidebar {
+      width: 250px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #34495e;
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      color: #2c3e50;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SIDEBAR ========== -->
+  <div class="sidebar">
+    <h2>CMR Mall</h2>
+    <a href="#" onclick="showSection('dashboard')">🏠 Dashboard</a>
+    <a href="#" onclick="showSection('sales')">💰 Sales</a>
+    <a href="#" onclick="showSection('visitors')">👥 Visitors</a>
+    <a href="#" onclick="showSection('shops')">🛍️ Shops</a>
+    <a href="#" onclick="showSection('events')">🎉 Events</a>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="main">
+    <div class="header">
+      <h1 id="section-title">Dashboard</h1>
+    </div>
+
+    <div id="content">
+      <div class="cards">
+        <div class="card">
+          <h3>Total Shops</h3>
+          <p id="shopsCount">120</p>
+        </div>
+        <div class="card">
+          <h3>Daily Visitors</h3>
+          <p id="visitorsCount">2,345</p>
+        </div>
+        <div class="card">
+          <h3>Monthly Sales</h3>
+          <p id="salesAmount">₹ 12,50,000</p>
+        </div>
+        <div class="card">
+          <h3>Upcoming Events</h3>
+          <p id="eventsCount">5</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2025 CMR Shopping Mall | Dashboard
+    </div>
+  </div>
+
+  <script>
+    // ========== JAVASCRIPT FOR INTERACTIVITY ==========
+    function showSection(section) {
+      const title = document.getElementById('section-title');
+      const content = document.getElementById('content');
+
+      if (section === 'dashboard') {
+        title.innerText = "Dashboard";
+        content.innerHTML = `
+          <div class="cards">
+            <div class="card"><h3>Total Shops</h3><p>120</p></div>
+            <div class="card"><h3>Daily Visitors</h3><p>2,345</p></div>
+            <div class="card"><h3>Monthly Sales</h3><p>₹ 12,50,000</p></div>
+            <div class="card"><h3>Upcoming Events</h3><p>5</p></div>
+          </div>`;
+      } 
+      else if (section === 'sales') {
+        title.innerText = "Sales Report";
+        content.innerHTML = `<div class="card"><h3>Today's Sales</h3><p>₹ 45,000</p></div>
+                             <div class="card"><h3>This Month</h3><p>₹ 12,50,000</p></div>`;
+      }
+      else if (section === 'visitors') {
+        title.innerText = "Visitors Overview";
+        content.innerHTML = `<div class="card"><h3>Today</h3><p>2,345 Visitors</p></div>
+                             <div class="card"><h3>This Month</h3><p>75,890 Visitors</p></div>`;
+      }
+      else if (section === 'shops') {
+        title.innerText = "Shops Directory";
+        content.innerHTML = `<div class="card"><h3>Fashion</h3><p>40 Shops</p></div>
+                             <div class="card"><h3>Electronics</h3><p>25 Shops</p></div>
+                             <div class="card"><h3>Food Court</h3><p>15 Shops</p></div>`;
+      }
+      else if (section === 'events') {
+        title.innerText = "Upcoming Events";
+        content.innerHTML = `<div class="card"><h3>Music Fest</h3><p>10th Sept</p></div>
+                             <div class="card"><h3>Food Carnival</h3><p>20th Sept</p></div>`;
+      }
+    }
+  </script>
+</body>
+</html>
